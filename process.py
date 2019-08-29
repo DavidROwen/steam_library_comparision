@@ -24,16 +24,14 @@ def parse():
     for title_list in rows:
         intersect = intersection(intersect, title_list)
 
-    f = open('results.html', 'w')
-    for item in intersect:
-        f.write(str("%s\n" % item))
-    f.close()
+    with open('results.html', 'w') as f:
+        for item in intersect:
+            f.write(str("%s\n" % item))
     
-def intersection(lst1, lst2):
-    # print(lst1) 
+def intersection(list1, list2):
     temp_list = []
-    for item1 in lst1:
-        if item1 in lst2:
+    for item1 in list1:
+        if item1 in list2:
             temp_list.append(item1)
     return temp_list
 
