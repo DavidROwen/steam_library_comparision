@@ -34,7 +34,7 @@ def parse():
 
     for category in counts:
         category.sort()
-        
+
     # Save the file
     with open('results.txt', 'w') as f:
         i = 0
@@ -43,12 +43,5 @@ def parse():
             for game in games:
                 f.write(str("%s\n" % game))
             i += 1
-    
-def intersection(list1, list2):
-    temp_list = []
-    for item in list1:
-        if item in list2:
-            temp_list.append(item)
-    return temp_list
 
 parse()
