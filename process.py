@@ -1,15 +1,11 @@
 # https://www.crummy.com/software/BeautifulSoup/bs4/doc/
-
-
 from bs4 import BeautifulSoup
 import os
-
-compiled_list = {}
 
 def parse():
     path = 'data/'
     folder = os.fsencode(path)
-    users_games = []
+    compiled_list = {}
 
     # Go through each html file and strip the titles
     num_players = len(os.listdir(folder))
@@ -26,12 +22,13 @@ def parse():
                     compiled_list[game.text] -= 1
                 else:
                     compiled_list[game.text] = num_players - 1
-            users_games.append(game_titles)
     
+    # Split games into lists based on how many of the players do not own them
     counts = [[] for i in range(num_players)]
     for game_name, count in compiled_list.items():
         counts[count].append(game_name)
 
+    # Alphabetically sort the lists of games
     for category in counts:
         category.sort()
 
